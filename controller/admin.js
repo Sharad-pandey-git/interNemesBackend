@@ -28,9 +28,8 @@ exports.signin = (req, res)=>{
 
         //Creat token
         const token = jwt.sign({_id : admin._id}, process.env.SECRET)
-        //Put Token into cookie expiring in 24 hours
-        //res.cookie("token",token, {expire : new Date(Date.now() + 86400e3)});
-        res.cookie("token",token, { maxAge: 1* 60 * 1000, httpOnly: true });
+        //Put Token into cookie expiring in 5 minutes
+        res.cookie("token",token, { maxAge: 5* 60 * 1000, httpOnly: true });
 
         const {_id , user_name } = admin ;
 
